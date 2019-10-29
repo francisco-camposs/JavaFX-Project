@@ -1,5 +1,8 @@
 package br.com.projetoLP;
 
+import br.com.projetoLP.model.AllImage;
+import br.com.projetoLP.model.CsvReader;
+import br.com.projetoLP.model.ProcessedImage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,6 +49,17 @@ public class Main extends Application {
      * @param args the input arguments
      */
     public static void main(String[] args) {
+        CsvReader csv = new CsvReader("data/dataset.csv");
+        AllImage allImage = new AllImage();
+        csv.searchFile();
+        csv.read(allImage);
+
+        for (ProcessedImage value: allImage.getAllImage()){
+            for (double tmp: value.getElements()){
+                System.out.print(tmp+";");
+            }
+            System.out.println(value.isHasPerson());
+        };
         launch(args);
     }
 

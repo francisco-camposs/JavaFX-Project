@@ -7,14 +7,14 @@ import java.util.ArrayList;
  */
 public class ProcessedImage{
 
-    private ArrayList<Long> param;
+    private ArrayList<Double> param;
     private boolean hasPerson;
 
     /**
      * Instantiates a new Processed image.
      */
     public ProcessedImage() {
-        this.param = new ArrayList<Long>(1000);
+        this.param = new ArrayList<Double>(1000);
     }
 
     /**
@@ -22,7 +22,7 @@ public class ProcessedImage{
      *
      * @param element the element
      */
-    public void addElement(Long element){
+    public void addElement(Double element){
         param.add(element);
     }
 
@@ -33,9 +33,9 @@ public class ProcessedImage{
      */
     public void addElement(String element){
         try {
-            param.add(Long.parseLong(element));
+            param.add(Double.parseDouble(element));
         } catch (NumberFormatException ex){
-            System.out.println(element+" is invalid for conversion");
+            setHasPerson(element);
         }
     }
 
@@ -44,11 +44,11 @@ public class ProcessedImage{
      *
      * @return the param
      */
-    public ArrayList<Long> getElements() {
+    public ArrayList<Double> getElements() {
         return param;
     }
 
-    public Long get(int index){
+    public Double get(int index){
         return param.get(index);
     }
 
@@ -67,13 +67,10 @@ public class ProcessedImage{
      * @param hasPerson the has person
      */
     public void setHasPerson(String hasPerson){
-        switch (hasPerson){
-            case "person":
-                this.hasPerson = true;
-                break;
-            case "notPerson":
-                this.hasPerson = false;
-                break;
+        if (hasPerson.equals("\"person\"")){
+            this.hasPerson = true;
+        } else {
+            this.hasPerson = false;
         }
     }
 

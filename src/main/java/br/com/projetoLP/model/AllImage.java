@@ -39,13 +39,13 @@ public class AllImage {
     }
 
     /**
-     * Get value float.
+     * Get value double.
      *
      * @param index  the index
      * @param column the column
-     * @return the float
+     * @return the double
      */
-    public Long getValue(int index, int column){
+    public double getValue(int index, int column){
         return  allImage.get(index).get(column);
     }
 

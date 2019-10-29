@@ -10,10 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import br.com.projetoLP.model.ScreenType;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
+/**
+ * The type Main controller.
+ */
 public class MainController implements Main.onChangeScreen {
 
     @FXML
@@ -31,6 +33,9 @@ public class MainController implements Main.onChangeScreen {
     @FXML
     private TextField CaminhoDaImagem;
 
+    /**
+     * Initialize.
+     */
     @FXML
     void initialize() {
         assert VerificarButtom != null : "fx:id=\"VerificarButtom\" was not injected: check your FXML file 'MainScreen.fxml'.";
@@ -42,10 +47,11 @@ public class MainController implements Main.onChangeScreen {
     public void onScreenChanged(ScreenType screen, Object userData) {
 
     }
+
     /**
      * Ação do botão 'verificar' ao ser clicado
-     * @param event Evento do botão
      *
+     * @param event Evento do botão
      */
     public void startOperation(ActionEvent event) {
         String str = CaminhoDaImagem.getText();
@@ -55,18 +61,28 @@ public class MainController implements Main.onChangeScreen {
 
     /**
      * Ação do botão 'cancelar' ao ser clicado
-     * @param event Evento do botão
      *
+     * @param event Evento do botão
      */
     public void btCancelarMain(ActionEvent event) {
         System.out.println("Botão cancelar clicado");
     }
 
+    /**
+     * Search archive.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void SearchArchive(MouseEvent mouseEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         File fix = fileChooser.showOpenDialog(Main.getStage());
-        CaminhoDaImagem.setText(fix.getAbsolutePath());
+        try {
+            CaminhoDaImagem.setText(fix.getAbsolutePath());
+        } catch (NullPointerException ex){
+            CaminhoDaImagem.setText("");
+        }
+
     }
 }
 
