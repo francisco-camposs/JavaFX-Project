@@ -41,3 +41,18 @@
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }
+
+#background
+{
+    -fx-background-color: #1d1d1d;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 11pt;
+}
+#diretorio
+{
+    -fx-end-margin: 10px;
+}
+

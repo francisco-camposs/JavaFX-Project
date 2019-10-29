@@ -6,13 +6,20 @@ import java.util.ResourceBundle;
 
 import br.com.projetoLP.Main;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import br.com.projetoLP.model.ScreenType;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class MainController implements Main.onChangeScreen {
 
@@ -29,6 +36,9 @@ public class MainController implements Main.onChangeScreen {
     private Button CancelarButton;
 
     @FXML
+    private Button SobreButton;
+
+    @FXML
     private TextField CaminhoDaImagem;
 
     @FXML
@@ -36,6 +46,7 @@ public class MainController implements Main.onChangeScreen {
         assert VerificarButtom != null : "fx:id=\"VerificarButtom\" was not injected: check your FXML file 'MainScreen.fxml'.";
         assert CancelarButton != null : "fx:id=\"CancelarButton\" was not injected: check your FXML file 'MainScreen.fxml'.";
         assert CaminhoDaImagem != null : "fx:id=\"CaminhoDaImagem\" was not injected: check your FXML file 'MainScreen.fxml'.";
+        assert SobreButton != null : "fx:id=\"SobreButton\" was not injected: check your FXML file 'MainScreen.fxml'.";
     }
 
     @Override
@@ -67,6 +78,32 @@ public class MainController implements Main.onChangeScreen {
         fileChooser.setTitle("Open Resource File");
         File fix = fileChooser.showOpenDialog(Main.getStage());
         CaminhoDaImagem.setText(fix.getAbsolutePath());
+    }
+
+    public void btSobreMain(ActionEvent event) {
+
+
+        Alert dialogSobre = new Alert(Alert.AlertType.INFORMATION);
+        dialogSobre.setTitle("Sobre");
+        dialogSobre.setHeaderText("TESTE");
+        dialogSobre.setContentText("Francisco\nAlexandre");
+        dialogSobre.setResizable(false);
+        dialogSobre.showAndWait();
+        /*SobreButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                final Stage dialog = new Stage();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                dialog.initOwner(Main.getStage());
+                VBox dialogVbox = new VBox(20);
+                dialogVbox.getChildren().add(new Text("This is a Dialog"));
+                Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                dialog.setScene(dialogScene);
+                dialog.show();
+            }
+        });
+
+         */
     }
 }
 
