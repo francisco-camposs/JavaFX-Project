@@ -7,7 +7,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.projetoLP.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" stylesheets="@../resources/principal.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.projetoLP.controller.MainController">
    <bottom>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="600.0" style="-fx-border-color: black; -fx-background-color: grey;" BorderPane.alignment="CENTER">
         <items>

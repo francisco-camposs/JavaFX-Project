@@ -32,6 +32,8 @@ public class Main extends Application {
         Parent FXMLMain = FXMLLoader.load(url);
         main = new Scene(FXMLMain, 600, 400);
 
+        //main.getStylesheets().add(getClass().getResource("@resources/principal.css").toExternalForm());
+
         stage.setScene(main);
         stage.show();
     }
