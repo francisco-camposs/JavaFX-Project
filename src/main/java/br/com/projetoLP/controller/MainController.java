@@ -39,10 +39,24 @@ public class MainController implements Main.onChangeScreen {
     public void onScreenChanged(ScreenType screen, Object userData) {
 
     }
-
+    /**
+     * Ação do botão 'verificar' ao ser clicado
+     * @param event Evento do botão
+     *
+     */
     public void startOperation(ActionEvent event) {
         String str = CaminhoDaImagem.getText();
         System.out.println(str);
+        CaminhoDaImagem.clear();
+    }
+
+    /**
+     * Ação do botão 'cancalar' ao ser clicado
+     * @param event Evento do botão
+     *
+     */
+    public void btCancelarMain(ActionEvent event) {
+        System.out.println("Botão cancelar clicado");
     }
 }
 
