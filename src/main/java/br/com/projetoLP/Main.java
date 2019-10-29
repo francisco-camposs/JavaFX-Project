@@ -105,4 +105,8 @@ public class Main extends Application {
         changeScreen(str, null);
     }
 
+
+    public static Stage getStage() {
+        return stage;
+    }
 }

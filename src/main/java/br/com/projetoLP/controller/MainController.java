@@ -1,5 +1,6 @@
 package br.com.projetoLP.controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import br.com.projetoLP.model.ScreenType;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
 public class MainController implements Main.onChangeScreen {
 
@@ -51,12 +54,19 @@ public class MainController implements Main.onChangeScreen {
     }
 
     /**
-     * Ação do botão 'cancalar' ao ser clicado
+     * Ação do botão 'cancelar' ao ser clicado
      * @param event Evento do botão
      *
      */
     public void btCancelarMain(ActionEvent event) {
         System.out.println("Botão cancelar clicado");
+    }
+
+    public void SearchArchive(MouseEvent mouseEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File fix = fileChooser.showOpenDialog(Main.getStage());
+        CaminhoDaImagem.setText(fix.getAbsolutePath());
     }
 }
 
