@@ -40,6 +40,7 @@ public class Main extends Application {
     /**
      * The entry point of application.
      * *
+     *
      * @param args the input arguments
      */
     public static void main(String[] args) {
@@ -70,10 +71,22 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Add on change screen on listeners.
+     *
+     * @param listener the listener
+     */
     public static void addOnChangeScreenOnListeners(onChangeScreen listener){
         listeners.add(listener);
     }
 
+
+    /**
+     * Change screen, os dados que quiser passar entre as telas será a variável userData.
+     *
+     * @param str      the str
+     * @param userData the user data
+     */
     public static void changeScreen(ScreenType str, Object userData){
         switch (str){
             case mainSreen:
@@ -83,6 +96,12 @@ public class Main extends Application {
         }
     }
 
+
+    /**
+     * Change screen.
+     *
+     * @param str the str
+     */
     public static void changeScreen(ScreenType str){
         changeScreen(str, null);
     }

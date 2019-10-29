@@ -40,7 +40,6 @@ public class MainController implements Main.onChangeScreen {
 
     }
 
-
     public void startOperation(ActionEvent event) {
         String str = CaminhoDaImagem.getText();
         System.out.println(str);
