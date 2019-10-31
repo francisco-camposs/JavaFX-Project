@@ -1,13 +1,12 @@
 package br.com.projetoLP.model;
 
-import br.com.projetoLP.model.AllImage;
+import br.com.projetoLP.model.image.AllImage;
+import br.com.projetoLP.model.image.ProcessedImage;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 
 public class CsvReader {
 

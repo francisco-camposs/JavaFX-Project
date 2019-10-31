@@ -2,25 +2,20 @@ package br.com.projetoLP.controller;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import br.com.projetoLP.Main;
+import br.com.projetoLP.model.*;
+import br.com.projetoLP.model.image.AllImage;
+import br.com.projetoLP.model.image.HogExtract;
+import br.com.projetoLP.model.image.ProcessedImage;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import br.com.projetoLP.model.ScreenType;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  * The type Main controller.
@@ -67,8 +62,23 @@ public class MainController implements Main.onChangeScreen {
      * @param event Evento do botão
      */
     public void startOperation(ActionEvent event) {
+
+        // Lê o conteúdo do arquivo.
+        CsvReader csv = new CsvReader("data/dataset_2019_1.csv");
+        AllImage allImage = new AllImage();
+        ProcessedImage image = new ProcessedImage();
+        csv.searchFile();
+        csv.read(allImage);
+
+        HogExtract hogExtract = new HogExtract();
+        try {
+            hogExtract.extract(CaminhoDaImagem.getText(), image);
+        } catch (NullPointerException ex){
+            System.out.println("Caminho não encontrado.");
+        }catch (Exception ex){
+            return;
+        }
         String str = CaminhoDaImagem.getText();
-        System.out.println(str);
         CaminhoDaImagem.clear();
     }
 
