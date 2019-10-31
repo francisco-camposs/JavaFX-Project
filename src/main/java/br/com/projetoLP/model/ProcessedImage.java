@@ -67,7 +67,7 @@ public class ProcessedImage{
      * @param hasPerson the has person
      */
     public void setHasPerson(String hasPerson){
-        if (hasPerson.equals("\"person\"")){
+        if (hasPerson.equals("person")){
             this.hasPerson = true;
         } else {
             this.hasPerson = false;

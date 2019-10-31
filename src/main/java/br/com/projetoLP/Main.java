@@ -49,17 +49,17 @@ public class Main extends Application {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        CsvReader csv = new CsvReader("data/dataset.csv");
+        CsvReader csv = new CsvReader("data/dataset_2019_1.csv");
         AllImage allImage = new AllImage();
         csv.searchFile();
         csv.read(allImage);
 
-        for (ProcessedImage value: allImage.getAllImage()){
-            for (double tmp: value.getElements()){
-                System.out.print(tmp+";");
-            }
-            System.out.println(value.isHasPerson());
-        };
+//        for (ProcessedImage value: allImage.getAllImage()){
+//            for (double tmp: value.getElements()){
+//                System.out.print(tmp+";");
+//            }
+//            System.out.println(value.isHasPerson());
+//        };
         launch(args);
     }
 

@@ -2,6 +2,8 @@ package br.com.projetoLP.controller;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import br.com.projetoLP.Main;
@@ -87,6 +89,11 @@ public class MainController implements Main.onChangeScreen {
     public void SearchArchive(MouseEvent mouseEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files ...","*.png", "*.jpeg","*.jpg");
+
+        fileChooser.getExtensionFilters().add(extFilter);
+
         File fix = fileChooser.showOpenDialog(Main.getStage());
         try {
             CaminhoDaImagem.setText(fix.getAbsolutePath());
@@ -97,8 +104,6 @@ public class MainController implements Main.onChangeScreen {
     }
 
     public void btSobreMain(ActionEvent event) {
-
-
         Alert dialogSobre = new Alert(Alert.AlertType.INFORMATION);
         dialogSobre.setTitle("Sobre");
         dialogSobre.setHeaderText("TESTE");
