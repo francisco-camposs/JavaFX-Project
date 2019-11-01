@@ -36,19 +36,20 @@ public class CsvReader {
 
             }
             while (fileReader.ready()){
+
                 tmp = (char)fileReader.read();
-                if (tmp != ',' & tmp != '\n'){
+                if (tmp != ',' & tmp != '\n' & tmp != '\13'){
                     value = value+tmp;
                 } else {
                     if (',' == tmp){
-                        img.addElement(value);
-                        value = "";
-                    }else {
-                        img.addElement(value);
-                        value = "";
+                        img.addElement(value, "numero");
+                    } else {
+                        value = value.substring(0,value.length()-1);
+                        img.addElement(value, "letra");
                         allImage.add(img);
                         img = new ProcessedImage();
                     }
+                    value = "";
                 }
             }
         } catch (FileNotFoundException e) {

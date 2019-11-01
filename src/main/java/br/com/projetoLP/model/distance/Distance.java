@@ -4,20 +4,8 @@ import br.com.projetoLP.model.heap.HeapTree;
 import br.com.projetoLP.model.image.AllImage;
 import br.com.projetoLP.model.image.ProcessedImage;
 
-public abstract class Distance {
-    protected HeapTree heapTree;
-    protected AllImage allImage;
-    protected ProcessedImage processedImage;
+public interface Distance {
 
-    public Distance(AllImage allImage, ProcessedImage processedImage) {
-        this.allImage = allImage;
-        this.processedImage = processedImage;
-        heapTree = new HeapTree();
-    }
+    public void calcularDistacia(ProcessedImage img, ProcessedImage Target);
 
-    public abstract void calcularDistacia();
-
-    public abstract void menoresDistancias();
-
-    public abstract boolean hasPerson();
 }

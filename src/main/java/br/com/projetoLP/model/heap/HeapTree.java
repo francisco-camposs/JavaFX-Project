@@ -13,6 +13,9 @@ public class HeapTree {
     // Max number of elements.
     private int capacity;
 
+    public ProcessedImage[] getVector() {
+        return vector;
+    }
 
     public HeapTree() {
         this(10);
@@ -27,7 +30,6 @@ public class HeapTree {
     public void addProcessedImage(ProcessedImage people){
         this.ensureCapacity();
         this.vector[getSize()] = people;
-        System.out.println("Aqui");
         heapifyUp(getSize());
         size+= 1;
     }
@@ -109,12 +111,37 @@ public class HeapTree {
         return vector[0];
     }
 
-    public ProcessedImage[] heapSort(){
-        HeapTree fila = new HeapTree();
-        fila.vector = Arrays.copyOfRange(this.vector, 0, this.size);
-        fila.size = size;
-        fila.capacity = capacity;
-        return fila.heap();
+    public void heapSort(){
+        for(int i = getSize()-1; i>0; --i){
+            ProcessedImage aux = vector[i];
+            vector[i] = vector[0];
+            vector[0] = aux;
+            size--;
+            heapifyDown(0, i);
+        }
+    }
+
+    private void heapifyDown(int index, int length) {
+        int leftChild = index*2+1;
+        int rightChild = index*2+2;
+
+        int maxIndex = index;
+
+        if(leftChild < length && vector[leftChild].getDistance() > vector[index].getDistance()){
+            maxIndex = leftChild;
+        }
+
+        if(rightChild < length && vector[rightChild].getDistance() > vector[maxIndex].getDistance()){
+            maxIndex = rightChild;
+        }
+
+        if(maxIndex != index){
+            ProcessedImage tmp = vector[maxIndex];
+            vector[maxIndex] = vector[index];
+            vector[index] = tmp;
+            tmp = null;
+            heapifyDown(maxIndex, length);
+        }
     }
 
 

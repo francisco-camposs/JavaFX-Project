@@ -45,7 +45,7 @@ public class ProcessedImage{
      *
      * @param element the element
      */
-    public void addElement(String element){
+    public void addElement(String element, String numero){
         try {
             param.add(Double.parseDouble(element));
         } catch (NumberFormatException ex){
@@ -71,17 +71,17 @@ public class ProcessedImage{
      *
      * @param hasPerson the has person
      */
-    public void setHasPerson(boolean hasPerson) {
-        this.hasPerson = hasPerson;
-    }
+//    public void setHasPerson(boolean hasPerson) {
+//        this.hasPerson = hasPerson;
+//    }
 
     /**
      * Set if has person.
      *
-     * @param hasPerson the has person
+     * @param hipotese the has person
      */
-    public void setHasPerson(String hasPerson){
-        if (hasPerson.equals("person")){
+    public void setHasPerson(String hipotese){
+        if (hipotese.equals("person")){
             this.hasPerson = true;
         } else {
             this.hasPerson = false;

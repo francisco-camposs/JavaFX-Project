@@ -3,24 +3,13 @@ package br.com.projetoLP.model.distance;
 import br.com.projetoLP.model.image.AllImage;
 import br.com.projetoLP.model.image.ProcessedImage;
 
-public class ManhathanDistance extends Distance{
+public class ManhathanDistance implements Distance{
 
-    public ManhathanDistance(AllImage allImage, ProcessedImage processedImage) {
-        super(allImage, processedImage);
-    }
-
-    @Override
-    public void calcularDistacia() {
-
-    }
-
-    @Override
-    public void menoresDistancias() {
-
-    }
-
-    @Override
-    public boolean hasPerson() {
-        return false;
+    public void calcularDistacia(ProcessedImage img, ProcessedImage target) {
+        double soma = 0;
+        for (int i = 0; i < 1000; i++){
+            soma += Math.abs(img.get(i) - target.get(i));
+        }
+        img.setDistance(soma);
     }
 }

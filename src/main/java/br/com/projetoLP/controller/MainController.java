@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import br.com.projetoLP.Main;
 import br.com.projetoLP.model.*;
+import br.com.projetoLP.model.enumeration.DistanceType;
+import br.com.projetoLP.model.enumeration.ScreenType;
 import br.com.projetoLP.model.image.AllImage;
 import br.com.projetoLP.model.image.HogExtract;
 import br.com.projetoLP.model.image.ProcessedImage;
@@ -78,6 +80,31 @@ public class MainController implements Main.onChangeScreen {
         }catch (Exception ex){
             return;
         }
+
+//        File folder = new File("/home/francisco/Repositorios/JavaFX-Project/noPerson");
+//
+//        File[] images = folder.listFiles();
+
+//        for (var file :images) {
+//            image = new ProcessedImage();
+//            try {
+//                hogExtract.extract(file.getAbsolutePath(), image);
+//            } catch (NullPointerException ex){
+//                System.out.println("Caminho não encontrado.");
+//            }catch (Exception ex){
+//                return;
+//            }
+//
+//            KNN knn = new KNN(allImage, image, DistanceType.EUCLIDEAN);
+//            knn.calcularDistancia();
+//            System.out.println("Tem pessoas: "+ knn.hasPerson());
+//            String str = CaminhoDaImagem.getText();
+//            CaminhoDaImagem.clear();
+//        }
+
+        KNN knn = new KNN(allImage, image, DistanceType.EUCLIDEAN);
+        knn.calcularDistancia();
+        System.out.println("Tem pessoas: "+ knn.hasPerson());
         String str = CaminhoDaImagem.getText();
         CaminhoDaImagem.clear();
     }
