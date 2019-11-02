@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import br.com.projetoLP.model.enumeration.ScreenType;
 
@@ -31,6 +32,9 @@ public class Main extends Application {
         URL url = new File("src/main/java/br/com/projetoLP/view/MainScreen.fxml").toURI().toURL();
         Parent FXMLMain = FXMLLoader.load(url);
         main = new Scene(FXMLMain, 600, 400);
+
+
+
 
         stage.setScene(main);
         stage.show();

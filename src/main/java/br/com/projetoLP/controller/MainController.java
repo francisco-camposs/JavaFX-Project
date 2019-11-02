@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -38,6 +39,9 @@ public class MainController implements Main.onChangeScreen {
 
     @FXML
     private Button SobreButton;
+
+    @FXML
+    private Alert alert;
 
     @FXML
     private TextField CaminhoDaImagem;
@@ -77,7 +81,20 @@ public class MainController implements Main.onChangeScreen {
             hogExtract.extract(CaminhoDaImagem.getText(), image);
         } catch (NullPointerException ex){
             System.out.println("Caminho não encontrado.");
+            Alert alertV = new Alert(Alert.AlertType.INFORMATION);
+            alertV.setTitle("Erro");
+            alertV.setHeaderText("Imagem não encontrada");
+            alertV.setContentText("Nenhuma imagem foi encontrada no diretório selecionado");
+            alertV.setResizable(false);
+            alertV.showAndWait();
+
         }catch (Exception ex){
+            Alert alertV = new Alert(Alert.AlertType.INFORMATION);
+            alertV.setTitle("Erro");
+            alertV.setHeaderText("Imagem não encontrada");
+            alertV.setContentText("Você precisa escolher alguma imagem");
+            alertV.setResizable(false);
+            alertV.showAndWait();
             return;
         }
 
@@ -141,13 +158,19 @@ public class MainController implements Main.onChangeScreen {
     }
 
     public void btSobreMain(ActionEvent event) {
-        Alert dialogSobre = new Alert(Alert.AlertType.INFORMATION);
-        dialogSobre.setTitle("Sobre");
-        dialogSobre.setHeaderText("TESTE");
-        dialogSobre.setContentText("Francisco\nAlexandre");
-        dialogSobre.setResizable(false);
-        dialogSobre.showAndWait();
-        /*SobreButton.setOnAction(new EventHandler<ActionEvent>() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sobre");
+        alert.setHeaderText("TESTE");
+        alert.setContentText("Francisco\nAlexandre");
+        alert.setResizable(false);
+        alert.showAndWait();
+        /*
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
+        dialogPane.getStyleClass().add("myDialog");
+
+
+        SobreButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 final Stage dialog = new Stage();
