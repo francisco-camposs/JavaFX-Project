@@ -121,6 +121,8 @@ public class MainController implements Main.onChangeScreen {
 
         KNN knn = new KNN(allImage, image, DistanceType.EUCLIDEAN);
         knn.calcularDistancia();
+
+
         System.out.println("Tem pessoas: "+ knn.hasPerson());
         String str = CaminhoDaImagem.getText();
         CaminhoDaImagem.clear();

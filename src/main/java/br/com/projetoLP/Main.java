@@ -32,9 +32,7 @@ public class Main extends Application {
         URL url = new File("src/main/java/br/com/projetoLP/view/MainScreen.fxml").toURI().toURL();
         Parent FXMLMain = FXMLLoader.load(url);
         main = new Scene(FXMLMain, 600, 400);
-
-
-
+        stage.setResizable(false);
 
         stage.setScene(main);
         stage.show();
