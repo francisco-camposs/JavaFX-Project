@@ -29,11 +29,20 @@ public class Main extends Application {
         stage.setTitle("Projeto de LP-2");
 
         // Se adicionar mais algum fxml e classe de controle tem que iniciar a página aqui.
+        /*
         URL url = new File("src/main/java/br/com/projetoLP/view/MainScreen.fxml").toURI().toURL();
         Parent FXMLMain = FXMLLoader.load(url);
         main = new Scene(FXMLMain, 600, 400);
-        stage.setResizable(false);
+        */
+        //Área da nova interface
 
+        URL url = new File("src/main/java/br/com/projetoLP/view/Main.fxml").toURI().toURL();
+        Parent FXMLMain = FXMLLoader.load(url);
+        main = new Scene(FXMLMain, 600, 400);
+
+
+
+        stage.setResizable(false);
         stage.setScene(main);
         stage.show();
     }

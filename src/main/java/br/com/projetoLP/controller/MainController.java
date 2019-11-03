@@ -1,6 +1,7 @@
 package br.com.projetoLP.controller;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,12 +12,12 @@ import br.com.projetoLP.model.enumeration.ScreenType;
 import br.com.projetoLP.model.image.AllImage;
 import br.com.projetoLP.model.image.HogExtract;
 import br.com.projetoLP.model.image.ProcessedImage;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
@@ -40,12 +41,18 @@ public class MainController implements Main.onChangeScreen {
     @FXML
     private Button SobreButton;
 
+    @FXML private RadioButton chebychev;
+    @FXML private RadioButton manhattan;
+    @FXML private RadioButton euclidiana;
+    @FXML private ImageView imagemCalculo;
+
     @FXML
     private Alert alert;
 
     @FXML
     private TextField CaminhoDaImagem;
 
+    private DistanceType TIPO_DISTANCIA = DistanceType.CHEBYCHEV;
     /**
      * Initialize.
      */
@@ -119,7 +126,7 @@ public class MainController implements Main.onChangeScreen {
 //            CaminhoDaImagem.clear();
 //        }
 
-        KNN knn = new KNN(allImage, image, DistanceType.EUCLIDEAN);
+        KNN knn = new KNN(allImage, image, TIPO_DISTANCIA);
         knn.calcularDistancia();
 
 
@@ -133,8 +140,8 @@ public class MainController implements Main.onChangeScreen {
      *
      * @param event Evento do botão
      */
-    public void btCancelarMain(ActionEvent event) {
-        System.out.println("Botão cancelar clicado");
+    public void btAjuda(ActionEvent event) {
+        System.out.println("Botão Ajuda");
     }
 
     /**
@@ -159,7 +166,7 @@ public class MainController implements Main.onChangeScreen {
 
     }
 
-    public void btSobreMain(ActionEvent event) {
+    public void btSobre(ActionEvent event) {
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sobre");
         alert.setHeaderText("TESTE");
@@ -187,6 +194,37 @@ public class MainController implements Main.onChangeScreen {
         });
 
          */
+    }
+    public void opcoesCalculo(javafx.event.ActionEvent event) throws MalformedURLException {
+        String message = "";
+        if(chebychev.isSelected())
+        {
+            System.out.println("Cheviichenco");
+            File file = new File("src/main/java/br/com/projetoLP/img/chebychev.png");
+            Image img = new Image(file.toURI().toString());
+            imagemCalculo.setImage(img);
+            TIPO_DISTANCIA =  DistanceType.CHEBYCHEV;
+        }
+        if (manhattan.isSelected())
+        {
+            System.out.println("Manhattan");
+
+            File file = new File("src/main/java/br/com/projetoLP/img/manhattan.png");
+            Image img = new Image(file.toURI().toString());
+
+            imagemCalculo.setImage(img);
+            TIPO_DISTANCIA =  DistanceType.MANHATHAN;
+        }
+        if (euclidiana.isSelected())
+        {
+            System.out.println("Euclidiana");
+            File file = new File("src/main/java/br/com/projetoLP/img/euclidiana.png");
+            Image img = new Image(file.toURI().toString());
+            imagemCalculo.setImage(img);
+            TIPO_DISTANCIA =  DistanceType.EUCLIDEAN;
+        }
+
+
     }
 }
 
