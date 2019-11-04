@@ -86,7 +86,8 @@ public class MainController implements Main.onChangeScreen {
         HogExtract hogExtract = new HogExtract();
         try {
             hogExtract.extract(CaminhoDaImagem.getText(), image);
-            Main.changeScreen(ScreenType.resultSreen);
+
+            Main.changeScreen(ScreenType.resultSreen, image);
 
         } catch (NullPointerException ex){
             System.out.println("Caminho não encontrado.");
