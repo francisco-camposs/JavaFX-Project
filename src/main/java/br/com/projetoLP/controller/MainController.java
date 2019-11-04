@@ -86,6 +86,8 @@ public class MainController implements Main.onChangeScreen {
         HogExtract hogExtract = new HogExtract();
         try {
             hogExtract.extract(CaminhoDaImagem.getText(), image);
+            Main.changeScreen(ScreenType.resultSreen);
+
         } catch (NullPointerException ex){
             System.out.println("Caminho não encontrado.");
             Alert alertV = new Alert(Alert.AlertType.INFORMATION);
@@ -142,6 +144,12 @@ public class MainController implements Main.onChangeScreen {
      */
     public void btAjuda(ActionEvent event) {
         System.out.println("Botão Ajuda");
+        Alert alertV = new Alert(Alert.AlertType.INFORMATION);
+        alertV.setTitle("Ajuda");
+        alertV.setHeaderText("Um pouco sobre o programa");
+        alertV.setContentText("(texto de ajuda aqui)");
+        alertV.setResizable(false);
+        alertV.showAndWait();
     }
 
     /**
@@ -220,6 +228,7 @@ public class MainController implements Main.onChangeScreen {
             System.out.println("Euclidiana");
             File file = new File("src/main/java/br/com/projetoLP/img/euclidiana.png");
             Image img = new Image(file.toURI().toString());
+            System.out.println(file.toURI().toString());
             imagemCalculo.setImage(img);
             TIPO_DISTANCIA =  DistanceType.EUCLIDEAN;
         }

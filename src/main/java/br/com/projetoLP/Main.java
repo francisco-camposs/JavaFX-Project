@@ -21,7 +21,11 @@ public class Main extends Application {
     // permitindo ela possivelmente trocar de tela se necessário.
     private static Stage stage;
     private static Scene main;
+    private static Scene result;
 
+    // Essa variável cria a lista de ouvintes, aqui devem ser adicionadas as classes de controle,
+    // De modo que elas possam trocar dados entre si já que o  javaFX não tem esse recurso nativamente.
+    private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -35,12 +39,13 @@ public class Main extends Application {
         main = new Scene(FXMLMain, 600, 400);
         */
         //Área da nova interface
-
-        URL url = new File("src/main/java/br/com/projetoLP/view/Main.fxml").toURI().toURL();
-        Parent FXMLMain = FXMLLoader.load(url);
+        URL urlMain = new File("src/main/java/br/com/projetoLP/view/Main.fxml").toURI().toURL();
+        Parent FXMLMain = FXMLLoader.load(urlMain);
         main = new Scene(FXMLMain, 600, 400);
 
-
+        URL urlResultScreen = new File("src/main/java/br/com/projetoLP/view/resultScreen.fxml").toURI().toURL();
+        Parent FXMLResultScreen = FXMLLoader.load(urlResultScreen);
+        result = new Scene(FXMLResultScreen, 600, 400);
 
         stage.setResizable(false);
         stage.setScene(main);
@@ -60,9 +65,8 @@ public class Main extends Application {
 
 
 
-    // Essa variável cria a lista de ouvintes, aqui devem ser adicionadas as classes de controle,
-    // De modo que elas possam trocar dados entre si já que o  javaFX não tem esse recurso nativamente.
-    private static ArrayList<onChangeScreen> listeners = new ArrayList<>();
+
+
 
     /**
      * The interface On change screen.
@@ -87,7 +91,8 @@ public class Main extends Application {
      *
      * @param listener the listener
      */
-    public static void addOnChangeScreenOnListeners(onChangeScreen listener){
+    public static void addOnChangeScreenOnListeners(onChangeScreen listener)
+    {
         listeners.add(listener);
     }
 
@@ -104,6 +109,10 @@ public class Main extends Application {
                 stage.setScene(main);
                 notifyAllListeners(str,userData);
                 break;
+            case resultSreen:
+                stage.setScene(result);
+                notifyAllListeners(str, userData);
+                break;
         }
     }
 
@@ -112,7 +121,8 @@ public class Main extends Application {
      *
      * @param str the str
      */
-    public static void changeScreen(ScreenType str){
+    public static void changeScreen(ScreenType str)
+    {
         changeScreen(str, null);
     }
 

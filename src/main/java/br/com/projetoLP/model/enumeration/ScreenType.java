@@ -4,5 +4,5 @@ public enum ScreenType {
     /**
      * Lista de telas.
      */
-    mainSreen
+    mainSreen, resultSreen;
 }
