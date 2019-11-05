@@ -4,6 +4,7 @@ import br.com.projetoLP.Main;
 import br.com.projetoLP.model.enumeration.ScreenType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+<<<<<<< HEAD
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +19,26 @@ public class ResultController implements Main.onChangeScreen {
 
     @FXML
     private ResourceBundle resources;
+=======
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+
+public class ResultController implements Main.onChangeScreen {
+
+    @FXML private Button btVoltarResult;
+    @FXML private Label lblResult;
+    @FXML private ImageView imagemSelecionada;
+
+    @FXML
+    void initialize()
+    {
+
+    }
+    @Override
+    public void onScreenChanged(ScreenType screen, Object userData) {
+>>>>>>> 67072875c978343e73034797716c0a3382272bb7
 
     @FXML
     private URL location;
