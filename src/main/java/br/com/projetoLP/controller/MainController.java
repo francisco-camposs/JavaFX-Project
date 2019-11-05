@@ -62,10 +62,11 @@ public class MainController implements Main.onChangeScreen {
         assert CancelarButton != null : "fx:id=\"CancelarButton\" was not injected: check your FXML file 'MainScreen.fxml'.";
         assert CaminhoDaImagem != null : "fx:id=\"CaminhoDaImagem\" was not injected: check your FXML file 'MainScreen.fxml'.";
         assert SobreButton != null : "fx:id=\"SobreButton\" was not injected: check your FXML file 'MainScreen.fxml'.";
+        Main.addOnChangeScreenOnListeners(this);
     }
 
     @Override
-    public void onScreenChanged(ScreenType screen, Object userData) {
+    public void onScreenChanged(ScreenType screen, Object ... userData) {
 
     }
 
@@ -86,7 +87,7 @@ public class MainController implements Main.onChangeScreen {
         HogExtract hogExtract = new HogExtract();
         try {
             hogExtract.extract(CaminhoDaImagem.getText(), image);
-            Main.changeScreen(ScreenType.resultSreen);
+
 
         } catch (NullPointerException ex){
             System.out.println("Caminho não encontrado.");
@@ -107,34 +108,14 @@ public class MainController implements Main.onChangeScreen {
             return;
         }
 
-//        File folder = new File("/home/francisco/Repositorios/JavaFX-Project/noPerson");
-//
-//        File[] images = folder.listFiles();
-
-//        for (var file :images) {
-//            image = new ProcessedImage();
-//            try {
-//                hogExtract.extract(file.getAbsolutePath(), image);
-//            } catch (NullPointerException ex){
-//                System.out.println("Caminho não encontrado.");
-//            }catch (Exception ex){
-//                return;
-//            }
-//
-//            KNN knn = new KNN(allImage, image, DistanceType.EUCLIDEAN);
-//            knn.calcularDistancia();
-//            System.out.println("Tem pessoas: "+ knn.hasPerson());
-//            String str = CaminhoDaImagem.getText();
-//            CaminhoDaImagem.clear();
-//        }
-
         KNN knn = new KNN(allImage, image, TIPO_DISTANCIA);
         knn.calcularDistancia();
-
-
-        System.out.println("Tem pessoas: "+ knn.hasPerson());
+        Boolean tmp = knn.hasPerson();
+        System.out.println("Tem pessoas: "+ tmp);
         String str = CaminhoDaImagem.getText();
+        Main.changeScreen(ScreenType.resultSreen, CaminhoDaImagem.getText(),tmp);
         CaminhoDaImagem.clear();
+        Main.addOnChangeScreenOnListeners(this);
     }
 
     /**

@@ -52,7 +52,6 @@ public class Main extends Application {
         stage.show();
     }
 
-
     /**
      * The entry point of application.
      * *
@@ -63,11 +62,6 @@ public class Main extends Application {
         launch(args);
     }
 
-
-
-
-
-
     /**
      * The interface On change screen.
      */
@@ -77,10 +71,10 @@ public class Main extends Application {
          *  @param screen   the screen
          * @param userData the user data
          */
-        public void onScreenChanged(ScreenType screen, Object userData);
+        public void onScreenChanged(ScreenType screen, Object ... userData);
     }
 
-    private static void notifyAllListeners(ScreenType screen, Object userData){
+    private static void notifyAllListeners(ScreenType screen, Object[] userData){
         for (onChangeScreen value:listeners) {
             value.onScreenChanged(screen, userData);
         }
@@ -103,27 +97,17 @@ public class Main extends Application {
      * @param str      the str
      * @param userData the user data
      */
-    public static void changeScreen(ScreenType str, Object userData){
+    public static void changeScreen(ScreenType str, Object ... userData){
         switch (str){
             case mainSreen:
-                stage.setScene(main);
                 notifyAllListeners(str,userData);
+                stage.setScene(main);
                 break;
             case resultSreen:
-                stage.setScene(result);
                 notifyAllListeners(str, userData);
+                stage.setScene(result);
                 break;
         }
-    }
-
-    /**
-     * Change screen.
-     *
-     * @param str the str
-     */
-    public static void changeScreen(ScreenType str)
-    {
-        changeScreen(str, null);
     }
 
 

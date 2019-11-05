@@ -10,6 +10,7 @@
       <ImageView fitHeight="221.0" fitWidth="200.0" layoutX="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="261.0" layoutY="32.0" text="Resultado:" />
       <Button fx:id="btVoltarResult" layoutX="37.0" layoutY="339.0" mnemonicParsing="false" onAction="#voltarScreen" text="Voltar" />
-      <Label layoutX="245.0" layoutY="69.0" text="Resultado Aqui" />
+      <Label fx:id="Resultado" alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="69.0" text="Resultado Aqui" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+      <ImageView fx:id="image" fitHeight="189.0" fitWidth="267.0" layoutX="167.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
