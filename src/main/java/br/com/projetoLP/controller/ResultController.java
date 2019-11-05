@@ -4,7 +4,6 @@ import br.com.projetoLP.Main;
 import br.com.projetoLP.model.enumeration.ScreenType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-<<<<<<< HEAD
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,40 +16,15 @@ import java.util.ResourceBundle;
 
 public class ResultController implements Main.onChangeScreen {
 
-    @FXML
-    private ResourceBundle resources;
-=======
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-
-public class ResultController implements Main.onChangeScreen {
-
+    @FXML private ResourceBundle resources;
     @FXML private Button btVoltarResult;
     @FXML private Label lblResult;
     @FXML private ImageView imagemSelecionada;
+    @FXML private URL location;
 
-    @FXML
-    void initialize()
-    {
+    @FXML private ImageView image;
 
-    }
-    @Override
-    public void onScreenChanged(ScreenType screen, Object userData) {
->>>>>>> 67072875c978343e73034797716c0a3382272bb7
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button btVoltarResult;
-
-    @FXML
-    private ImageView image;
-
-    @FXML
-    private Label Resultado;
+    @FXML private Label Resultado;
 
     private Boolean hasPerson;
 
@@ -76,7 +50,6 @@ public class ResultController implements Main.onChangeScreen {
             image.setImage(new Image(img.toURI().toString()));
             hasPerson = (Boolean)userData[1];
             Resultado.setText(hasPerson.toString());
-            Resultado.setAlignment(Pos.CENTER);
         }
     }
 }

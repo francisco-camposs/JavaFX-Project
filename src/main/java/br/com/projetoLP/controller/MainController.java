@@ -87,12 +87,6 @@ public class MainController implements Main.onChangeScreen {
         HogExtract hogExtract = new HogExtract();
         try {
             hogExtract.extract(CaminhoDaImagem.getText(), image);
-
-<<<<<<< HEAD
-=======
-            Main.changeScreen(ScreenType.resultSreen, image);
->>>>>>> 67072875c978343e73034797716c0a3382272bb7
-
         } catch (NullPointerException ex){
             System.out.println("Caminho não encontrado.");
             Alert alertV = new Alert(Alert.AlertType.INFORMATION);
@@ -105,6 +99,7 @@ public class MainController implements Main.onChangeScreen {
         }catch (Exception ex){
             Alert alertV = new Alert(Alert.AlertType.INFORMATION);
             alertV.setTitle("Erro");
+            System.out.println("Mas rapaz");
             alertV.setHeaderText("Imagem não encontrada");
             alertV.setContentText("Você precisa escolher alguma imagem");
             alertV.setResizable(false);

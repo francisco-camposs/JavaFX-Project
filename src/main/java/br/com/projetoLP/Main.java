@@ -58,10 +58,6 @@ public class Main extends Application {
         launch(args);
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 67072875c978343e73034797716c0a3382272bb7
     /**
      * The interface On change screen.
      */
