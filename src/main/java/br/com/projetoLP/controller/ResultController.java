@@ -18,8 +18,6 @@ public class ResultController implements Main.onChangeScreen {
 
     @FXML private ResourceBundle resources;
     @FXML private Button btVoltarResult;
-    @FXML private Label lblResult;
-    @FXML private ImageView imagemSelecionada;
     @FXML private URL location;
 
     @FXML private ImageView image;

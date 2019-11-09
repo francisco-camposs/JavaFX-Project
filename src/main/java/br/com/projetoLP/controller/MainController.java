@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * The type Main controller.
@@ -122,12 +123,21 @@ public class MainController implements Main.onChangeScreen {
      *
      * @param event Evento do botão
      */
-    public void btAjuda(ActionEvent event) {
+    public  void btAjuda(ActionEvent event) {
         System.out.println("Botão Ajuda");
+
         Alert alertV = new Alert(Alert.AlertType.INFORMATION);
         alertV.setTitle("Ajuda");
         alertV.setHeaderText("Um pouco sobre o programa");
-        alertV.setContentText("(texto de ajuda aqui)");
+        alertV.setContentText("O programa trata a análise de imagens para identificação de pessoas\n" +
+                "Escolha uma imagem e escolha um dos tipos de medidas que deseja para o cálculo da indentificação");
+
+
+        //DialogPane dialogPane = alertV.getDialogPane();
+        //File file = new File("src/main/java/br/com/projetoLP/controller/myDialogs.css");
+        //dialogPane.getStylesheets().add(MainController.class.getResource("myDialogs.css").toExternalForm());
+       // dialogPane.getStyleClass().add("myDialog");
+
         alertV.setResizable(false);
         alertV.showAndWait();
     }

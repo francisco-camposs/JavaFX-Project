@@ -7,11 +7,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../resources/principal.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.projetoLP.controller.ResultController">
    <children>
-      <ImageView fx:id="imagemSelecionada" fitHeight="221.0" fitWidth="200.0" layoutX="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="261.0" layoutY="32.0" text="Resultado:" />
+      <Label layoutX="221.0" layoutY="69.0" text="Resultado:" />
       <Button fx:id="btVoltarResult" layoutX="37.0" layoutY="339.0" mnemonicParsing="false" onAction="#voltarScreen" text="Voltar" />
-      <Label fx:id="Resultado" alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="69.0" text=" " textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-      <ImageView fx:id="image" fitHeight="189.0" fitWidth="267.0" layoutX="167.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lblResult" layoutX="245.0" layoutY="69.0" />
+      <Label fx:id="Resultado" alignment="CENTER" contentDisplay="CENTER" layoutX="307.0" layoutY="69.0" prefHeight="19.0" prefWidth="44.0" text=" " textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+      <ImageView fx:id="image" fitHeight="189.0" fitWidth="157.0" layoutX="229.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
