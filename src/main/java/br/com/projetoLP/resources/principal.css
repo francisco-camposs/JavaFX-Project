@@ -43,6 +43,10 @@
     -fx-text-fill: black;
     -fx-font-size: 11pt;
 }
+#titulo {
+    -fx-font-size: 15pt;
+    -fx-text-fill: black;
+}
 
 .text-field {
     -fx-background-color: #a9a9a9 , white , white;

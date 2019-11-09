@@ -15,6 +15,9 @@ import br.com.projetoLP.model.image.ProcessedImage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,33 +30,21 @@ import javafx.stage.Stage;
  */
 public class MainController implements Main.onChangeScreen {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button VerificarButtom;
-
-    @FXML
-    private Button CancelarButton;
-
-    @FXML
-    private Button SobreButton;
-
+    @FXML private ResourceBundle resources;
+    @FXML private URL location;
+    @FXML private Button VerificarButtom;
+    @FXML private Button CancelarButton;
+    @FXML private Button SobreButton;
     @FXML private RadioButton chebychev;
     @FXML private RadioButton manhattan;
     @FXML private RadioButton euclidiana;
     @FXML private ImageView imagemCalculo;
-
-    @FXML
-    private Alert alert;
-
-    @FXML
-    private TextField CaminhoDaImagem;
+    @FXML private Button btOk;
+    @FXML private Alert alert;
+    @FXML private TextField CaminhoDaImagem;
 
     private DistanceType TIPO_DISTANCIA = DistanceType.CHEBYCHEV;
+    private Stage stageDialog;
     /**
      * Initialize.
      */
@@ -123,23 +114,17 @@ public class MainController implements Main.onChangeScreen {
      *
      * @param event Evento do botão
      */
-    public  void btAjuda(ActionEvent event) {
+    public  void btAjuda(ActionEvent event) throws Exception {
         System.out.println("Botão Ajuda");
 
-        Alert alertV = new Alert(Alert.AlertType.INFORMATION);
-        alertV.setTitle("Ajuda");
-        alertV.setHeaderText("Um pouco sobre o programa");
-        alertV.setContentText("O programa trata a análise de imagens para identificação de pessoas\n" +
-                "Escolha uma imagem e escolha um dos tipos de medidas que deseja para o cálculo da indentificação");
+        stageDialog = new Stage();
+        stageDialog.setTitle("Ajuda");
+        URL urlAjudaScreen = new File("src/main/java/br/com/projetoLP/view/DialogAboutScreen.fxml").toURI().toURL();
+        Parent FXMLAjudaScreen = FXMLLoader.load(urlAjudaScreen);
+        Scene AjudaScreen = new Scene(FXMLAjudaScreen, 400, 250);
 
-
-        //DialogPane dialogPane = alertV.getDialogPane();
-        //File file = new File("src/main/java/br/com/projetoLP/controller/myDialogs.css");
-        //dialogPane.getStylesheets().add(MainController.class.getResource("myDialogs.css").toExternalForm());
-       // dialogPane.getStyleClass().add("myDialog");
-
-        alertV.setResizable(false);
-        alertV.showAndWait();
+        stageDialog.setScene(AjudaScreen);
+        stageDialog.show();
     }
 
     /**
@@ -164,34 +149,16 @@ public class MainController implements Main.onChangeScreen {
 
     }
 
-    public void btSobre(ActionEvent event) {
-        alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sobre");
-        alert.setHeaderText("TESTE");
-        alert.setContentText("Francisco\nAlexandre");
-        alert.setResizable(false);
-        alert.showAndWait();
-        /*
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
-        dialogPane.getStyleClass().add("myDialog");
+    public void btSobre(ActionEvent event) throws Exception {
+        stageDialog = new Stage();
+        stageDialog.setTitle("Sobre");
+        URL urlSobreScreen = new File("src/main/java/br/com/projetoLP/view/DialogSobreScreen.fxml").toURI().toURL();
+        Parent FXMLSobreScreen = FXMLLoader.load(urlSobreScreen);
+        Scene sobreScreen = new Scene(FXMLSobreScreen, 400, 350);
 
+        stageDialog.setScene(sobreScreen);
+        stageDialog.show();
 
-        SobreButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                final Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initOwner(Main.getStage());
-                VBox dialogVbox = new VBox(20);
-                dialogVbox.getChildren().add(new Text("This is a Dialog"));
-                Scene dialogScene = new Scene(dialogVbox, 300, 200);
-                dialog.setScene(dialogScene);
-                dialog.show();
-            }
-        });
-
-         */
     }
     public void opcoesCalculo(javafx.event.ActionEvent event) throws MalformedURLException {
         String message = "";
@@ -224,6 +191,11 @@ public class MainController implements Main.onChangeScreen {
         }
 
 
+    }
+    @FXML
+    public void btFechar(javafx.event.ActionEvent event) {
+        Stage stage = (Stage) btOk.getScene().getWindow();
+        stage.close();
     }
 }
 

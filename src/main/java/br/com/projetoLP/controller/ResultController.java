@@ -47,7 +47,15 @@ public class ResultController implements Main.onChangeScreen {
             File img = new File((String)userData[0]);
             image.setImage(new Image(img.toURI().toString()));
             hasPerson = (Boolean)userData[1];
-            Resultado.setText(hasPerson.toString());
+            String message;
+            if (hasPerson == true)
+            {
+                message = "Pessoa identificada";
+            }else
+            {
+                message = "Nenhuma Pessoa identificada";
+            }
+            Resultado.setText(message);
         }
     }
 }
