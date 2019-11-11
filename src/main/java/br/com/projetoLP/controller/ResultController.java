@@ -43,7 +43,6 @@ public class ResultController implements Main.onChangeScreen {
     @Override
     public void onScreenChanged(ScreenType screen, Object... userData) {
         if (ScreenType.resultSreen == screen){
-            System.out.println("Foi aqui");
             File img = new File((String)userData[0]);
             image.setImage(new Image(img.toURI().toString()));
             hasPerson = (Boolean)userData[1];

@@ -80,7 +80,7 @@ public class MainController implements Main.onChangeScreen {
         try {
             hogExtract.extract(CaminhoDaImagem.getText(), image);
         } catch (NullPointerException ex){
-            System.out.println("Caminho não encontrado.");
+
             Alert alertV = new Alert(Alert.AlertType.INFORMATION);
             alertV.setTitle("Erro");
             alertV.setHeaderText("Imagem não encontrada");
@@ -102,7 +102,7 @@ public class MainController implements Main.onChangeScreen {
         KNN knn = new KNN(allImage, image, TIPO_DISTANCIA);
         knn.calcularDistancia();
         Boolean tmp = knn.hasPerson();
-        System.out.println("Tem pessoas: "+ tmp);
+
         String str = CaminhoDaImagem.getText();
         Main.changeScreen(ScreenType.resultSreen, CaminhoDaImagem.getText(),tmp);
         CaminhoDaImagem.clear();
